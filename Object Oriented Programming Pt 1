@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+
+class Vehicle {
+private:
+    int number_tyres;
+    string name;
+    int capacity;
+    int mileage; // Corrected spelling to 'mileage'
+
+public:
+    void calculateMileage() {
+        cout << "The mileage is: " << mileage << endl;
+    }
+
+    // Getter for name (since it's private)
+    string getName() const {
+        return name;
+    }
+};
+
+class SchoolBus : public Vehicle {
+private:
+    // No need to redefine members from Vehicle
+
+public:
+    void displaySchoolName() {
+        // Accessing name using the getter from base class
+        cout << "The name of the school is: " << getName() << endl;
+    }
+};
+
+class Car : public Vehicle {
+private:
+    int number_airbags;
+    int ac_consumption;
+
+public:
+    // Constructors for Car
+    Car() : number_airbags(0), ac_consumption(0) {}
+
+    Car(int airbags, int ac) : number_airbags(airbags), ac_consumption(ac) {}
+
+    // Additional member functions specific to Car
+};
+
+int main() {
+    Car a;
+    a.calculateMileage();
+
+    SchoolBus bus;
+    bus.displaySchoolName();
+
+    return 0;
+}
